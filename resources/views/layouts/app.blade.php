@@ -15,6 +15,8 @@
 
         @livewireStyles
 
+        <script src="https://kit.fontawesome.com/a83f112a40.js" crossorigin="anonymous"></script>
+
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
