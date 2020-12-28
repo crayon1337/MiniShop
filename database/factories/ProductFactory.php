@@ -2,19 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Hash;
 
-class UserFactory extends Factory
+class ProductFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Product::class;
 
     /**
      * Define the model's default state.
@@ -25,10 +24,9 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
-            'email_verified_at' => now(),
-            'password' => Hash::make('user'), // password
-            'remember_token' => Str::random(10),
+            'description' => $this->faker->realText(100),
+            'image_url' => 'https://www.hilti.com.my/content/hilti/A2/MY/en/homepage/jcr:content/teaserSet3ItemsWrapper/defaultVariant/teaser1.img.png/1554454725633.png',
+            'price' => $this->faker->numberBetween(10, 500),
         ];
     }
 }
