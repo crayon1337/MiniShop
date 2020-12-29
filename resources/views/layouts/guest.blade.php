@@ -19,6 +19,9 @@
             .dropdown:hover .dropdown-menu {
                 display: block;
             }
+            body {
+                direction: {{ LaravelLocalization::getCurrentLocaleDirection() }};
+            }
         </style>
     </head>
     <body>
