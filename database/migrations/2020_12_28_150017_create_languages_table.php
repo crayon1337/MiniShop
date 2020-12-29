@@ -17,7 +17,7 @@ class CreateLanguagesTable extends Migration
             $table->id();
             $table->string('title', 64);
             $table->text('image_url')->nullable();
-            $table->string('locale', 2);
+            $table->string('locale', 2)->unique();
             $table->timestamps();
         });
     }
