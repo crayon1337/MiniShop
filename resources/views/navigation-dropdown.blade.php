@@ -13,7 +13,16 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
-                        {{ __('Home') }}
+                        {{ __('misc.home') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('shop') }}" :active="request()->routeIs('shop')">
+                        {{ __('misc.shop') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">
+                        {{ __('misc.about') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('contact') }}" :active="request()->routeIs('contact')">
+                        {{ __('misc.contact') }}
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -105,11 +114,23 @@
             @endauth
             @guest
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <div class="dropdown inline-block relative py-3">
+                        <button class="bg-gray-300 text-gray-700 font-semibold py-2 px-6 rounded inline-flex items-center">
+                          <span class="mr-1">{{ __('misc.languages') }}</span>
+                          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
+                        </button>
+                        <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
+                            
+                          @foreach($languages as $language)
+                            <li><a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 inline-flex items-center w-36" href="{{ LaravelLocalization::getLocalizedURL($language->locale, null, [], true) }}"><img class="w-4 h-4 mr-2" src="{{ $language->image_url }}" /> {{ $language->title }}</a></li>
+                          @endforeach
+                        </ul>
+                    </div>
                     <x-jet-nav-link href="{{ route('login') }}">
-                        {{ __('Login') }}
+                        {{ __('misc.login') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('register') }}">
-                        {{ __('Register') }}
+                        {{ __('misc.register') }}
                     </x-jet-nav-link>
                 </div>
             @endguest

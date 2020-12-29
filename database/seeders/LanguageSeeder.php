@@ -27,7 +27,7 @@ class LanguageSeeder extends Seeder
         DB::insert('insert into languages (title, image_url, locale) values (?, ?, ?)', [
             'Spanish', 
             'https://cdn.countryflags.com/thumbs/spain/flag-400.png',
-            'sp'
+            'es'
         ]);
     }
 }

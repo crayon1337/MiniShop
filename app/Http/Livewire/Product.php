@@ -8,7 +8,7 @@ class Product extends Component
 {
     private function getProducts()
     {
-        return \App\Models\Product::all();
+        return \App\Models\Product::limit(6)->orderBy('created_at','desc')->get();
     }
 
     public function render()

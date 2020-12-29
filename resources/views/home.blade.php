@@ -1,24 +1,25 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
     <div class="py-12 max-w-7xl mx-auto ">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <x-jet-welcome />
         </div>
     </div>
     <div class="py-2 max-w-7xl mx-auto mb-10">
+        <div class="lg:flex lg:items-center lg:justify-between mb-6">
+            <div class="flex-1 min-w-0">
+              <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+                {{ __('misc.latestProducts') }}
+              </h2>
+            </div>
+        </div>
         <livewire:product />
     </div>
-    <footer class="footer bg-white relative pt-1 border-b-2 border-blue-700">
+    <footer class="footer bg-white relative pt-1">
         <div class="container mx-auto px-6">
             <div class="sm:flex sm:mt-8">
                 <div class="mt-8 max-w-5xl sm:mt-0 sm:w-full sm:px-8 flex flex-col md:flex-row justify-between">
                     <div class="flex flex-col">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quibusdam ipsum illo enim officiis placeat, error reprehenderit sapiente perferendis necessitatibus inventore sit, dolore cupiditate vel deserunt iusto saepe sint quam.</p>
+                        <p>{{ __('misc.footerText') }}</p>
                     </div>
 
                 </div>
