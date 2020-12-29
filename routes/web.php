@@ -187,7 +187,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
 
     Route::get('/', function () {
         return view('home');
-    })->middleware('throttle:30,1')->name('home');
+    })->name('home');
 
     Route::get('/shop', function() {
         return view('shop');

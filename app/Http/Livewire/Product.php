@@ -14,7 +14,7 @@ class Product extends Component
     public function render()
     {
         return view('livewire.product', [
-            'products' => $this->getProducts(),
+            'data' => $this->getProducts(),
         ]);
     }
 }
