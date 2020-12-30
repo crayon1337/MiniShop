@@ -22,6 +22,7 @@ use Laravel\Jetstream\Http\Controllers\Livewire\ApiTokenController;
 use Laravel\Jetstream\Http\Controllers\Livewire\TeamController;
 use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
 use Laravel\Jetstream\Jetstream;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -185,6 +186,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
         });
     });
 
+    //Application Routes
     Route::get('/', function () {
         return view('home');
     })->name('home');
@@ -200,4 +202,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
     Route::get('/contact', function() {
         return view('contact');
     })->middleware('throttle:30,1')->name('contact');
-});
+    
+    Route::group(['prefix' => 'admin'], function() {
+        Route::get('/login', function() {
+            return view('admin.login');
+        });
+        Route::post('/login', [AdminController::class, 'login'])->name('adminLogin');
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.index');
+    });
+}); 

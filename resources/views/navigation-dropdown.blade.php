@@ -26,9 +26,7 @@
                     </x-jet-nav-link>
                 </div>
             </div>
-
-            @auth
-            <!-- Settings Dropdown -->
+            <!-- Auth Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <div class="dropdown inline-block relative py-3 mr-2">
                     <button class="bg-gray-300 text-gray-700 font-semibold py-2 px-6 rounded inline-flex items-center">
@@ -42,6 +40,7 @@
                       @endforeach
                     </ul>
                 </div>
+            @if(Auth::guard('web')->check())
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -122,31 +121,59 @@
                         </form>
                     </x-slot>
                 </x-jet-dropdown>
-            </div>
-            @endauth
-            @guest
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <div class="dropdown inline-block relative py-3">
-                        <button class="bg-gray-300 text-gray-700 font-semibold py-2 px-6 rounded inline-flex items-center">
-                          <span class="mr-1">{{ __('misc.languages') }}</span>
-                          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
-                        </button>
-                        <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
-                            
-                          @foreach($languages as $language)
-                            <li><a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 inline-flex items-center w-36" href="{{ LaravelLocalization::getLocalizedURL($language->locale, null, [], true) }}"><img class="w-4 h-4 mr-2" src="{{ $language->image_url }}" /> {{ $language->title }}</a></li>
-                          @endforeach
-                        </ul>
-                    </div>
+            @elseif(Auth::guard('admin')->check())
+                            <x-jet-dropdown align="right" width="48">
+                                <x-slot name="trigger">
+                                        <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                            <div>{{ Auth::guard('admin')->user()->name }}</div>
+            
+                                            <div class="ml-1">
+                                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                        </button>
+                                </x-slot>
+            
+                                <x-slot name="content">
+                                    <!-- Account Management -->
+                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                        {{ __('misc.manageAccount') }}
+                                    </div>
+            
+                                    <x-jet-dropdown-link href="{{ route('admin.index') }}">
+                                        {{ __('misc.dashboard') }}
+                                    </x-jet-dropdown-link>
+            
+                                    @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                                        <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
+                                            {{ __('API Tokens') }}
+                                        </x-jet-dropdown-link>
+                                    @endif
+            
+                                    <div class="border-t border-gray-100"></div>
+            
+                                    <!-- Authentication -->
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+            
+                                        <x-jet-dropdown-link href="{{ route('logout') }}"
+                                                            onclick="event.preventDefault();
+                                                                        this.closest('form').submit();">
+                                            {{ __('misc.logout') }}
+                                        </x-jet-dropdown-link>
+                                    </form>
+                                </x-slot>
+                            </x-jet-dropdown>
+            @else
                     <x-jet-nav-link href="{{ route('login') }}">
                         {{ __('misc.login') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('register') }}">
                         {{ __('misc.register') }}
                     </x-jet-nav-link>
-                </div>
-            @endguest
-
+            @endif
+            </div>
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">

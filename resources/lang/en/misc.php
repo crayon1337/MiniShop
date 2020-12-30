@@ -57,5 +57,6 @@ return [
     'forgotPassword' => 'Forgot your password?',
     'forgotPasswordText' => 'Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.',
     'emailPasswordSend' => 'Email Password Reset Link',
-    'alreadyRegistered' => 'Already registered?'
+    'alreadyRegistered' => 'Already registered?',
+    'dashboard' => 'Dashboard'
 ];
