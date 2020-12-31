@@ -203,11 +203,18 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
         return view('contact');
     })->middleware('throttle:30,1')->name('contact');
     
-    Route::group(['prefix' => 'admin'], function() {
-        Route::get('/login', function() {
-            return view('admin.login');
-        });
-        Route::post('/login', [AdminController::class, 'login'])->name('adminLogin');
+    //Admin Login Routes
+    Route::get('/login', function() {
+        return view('admin.login');
+    });
+    Route::post('/login', [AdminController::class, 'login'])->name('adminLogin');
+
+    //Admin Panel Routes
+    Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.index');
+        Route::get('/languages', [AdminController::class, 'languages'])->name('admin.languages');
+        Route::get('/products', [AdminController::class, 'products'])->name('admin.products');
+        Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
+        Route::get('/admins', [AdminController::class, 'admins'])->name('admin.admins');
     });
 }); 
