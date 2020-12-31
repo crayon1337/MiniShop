@@ -10,10 +10,10 @@
 ## About SEO ERA Task
 
 Hello,
-
+<br>
 It looks like a simple task I had a lot of fun working on it. I wanted to use the brand new Livewire technology from Laravel team. And I like it so much. Combined with Laravel 8, SQLite & Tailwind CSS I have built this mini shop. I could expand the features but I wanted to keep it shotalized and straight forward. However, I wrote every single byte in this project's folder even the translation "misc.php" files. If you have any further questions please let me know. 
 
-Sincerely,
+Sincerely,<br>
 Mohammed Mahmoud
 
 ## Requirements
@@ -45,9 +45,13 @@ Mohammed Mahmoud
 - execute ``composer install --optimize-autoloader --no-dev``
 - ``php artisan key:generate``
 - Generate .env file (You will find an example version)
-- Check the database path in .ENV file
+- Gerenate a SQLite database or whatever you would like to use
+- Execue this command in order to migrate the database ``php artisan migrate``
+- Check the database path in .ENV file (Incase it's SQLite)
 - Seed the database using the seeders (``php artisan db:seed``)
 - ``php artisan serve``
+
+P.S: I've also added a database dump of the db I have been using (database/schema).
 
 ## License
 
