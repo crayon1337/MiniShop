@@ -61,5 +61,9 @@ return [
     'dashboard' => 'لوحة التحكم',
     'description' => 'الوصف',
     'price' => 'السعر',
-    'image_url' => 'رابط الصورة'
+    'image_url' => 'رابط الصورة',
+    'title' => 'الاسم',
+    'locale' => 'الرمز',
+    'flag' => 'العلم',
+    'language' => 'اللغة'
 ];

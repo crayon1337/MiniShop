@@ -216,6 +216,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
         Route::get('/products', [AdminController::class, 'products'])->name('admin.products');
         Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
         Route::get('/admins', [AdminController::class, 'admins'])->name('admin.admins');
-        Route::post('/product/store', [AdminController::class, 'saveProduct'])->name('storeProducts');
+        Route::post('/product/store', [AdminController::class, 'saveProduct'])->name('storeProduct');
+        Route::post('/admin/store', [AdminController::class, 'saveAdmin'])->name('storeAdmin');
+        Route::post('/language/store', [AdminController::class, 'saveLanguage'])->name('storeLanguage');
     });
 }); 

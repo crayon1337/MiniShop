@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+//Laravel helper classes
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+//Application Models.
 use App\Models\Admin;
 use App\Models\Language;
 use App\Models\Product;
 use App\Models\User;
+//Form Requests.
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\StoreLanguageRequest;
+use App\Http\Requests\StoreAdminRequest;
 
 
 class AdminController extends Controller
@@ -22,7 +28,7 @@ class AdminController extends Controller
         return view('admin.index', [
             'admins' => Admin::count(),
             'users' => User::count(),
-            'languages' => Language::count(),
+            'languagesCount' => Language::count(),
             'products' => Product::count()
         ]);
     }
@@ -34,7 +40,7 @@ class AdminController extends Controller
     public function languages()
     {
         //Return all available languages to the view.
-        return view('admin.language', ['languages' => Language::all()]);
+        return view('admin.language', ['languages' => Language::orderBy('created_at', 'desc')->get()]);
     }
 
     /**
@@ -54,7 +60,7 @@ class AdminController extends Controller
     public function admins()
     {
         // Return all availble admins to the view.
-        return view('admin.admins', [ 'admins' => Admin::with('language')->get() ]);
+        return view('admin.admins', [ 'admins' => Admin::with('language')->orderBy('created_at','desc')->get() ]);
     }
 
     /**
@@ -83,7 +89,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Validate the request from the user
+     * Validate the request from the admin
      * Create the product in the database!
     */
     public function saveProduct(StoreProductRequest $request)
@@ -96,5 +102,40 @@ class AdminController extends Controller
 
         //Return back with a message.
         return back()->with(['status' => 'The product has been saved successfully']);
+    }
+
+    /**
+     * Validate the request from the admin
+     * Create the language in the database!
+    */
+    public function saveLanguage(StoreLanguageRequest $request)
+    {
+        //Get the validated data from StoreLanguageRequest Class
+        $data = $request->validated();
+
+        //Store the language in the database.
+        Language::create($data);
+
+        //Return back with a message.
+        return back()->with(['status' => 'The language has been saved successfully']);
+    }
+
+    /**
+     * Validate the request from the admin
+     * Create the admin in the database!
+    */
+    public function saveAdmin(StoreAdminRequest $request)
+    {
+        //Get the validated data from StoreAdminRequest Class
+        $data = $request->validated();
+
+        //Hash the password before we save it. (Tweak it)
+        $data['password'] = Hash::make($data['password']);
+
+        //Store the admin in the database.
+        Admin::create($data);
+
+        //Return back with a message.
+        return back()->with(['status' => 'The admin user has been created successfully']);
     }
 }

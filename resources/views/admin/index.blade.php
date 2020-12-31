@@ -38,7 +38,7 @@
     <div class="shadow bg-blue-500 border-l-8 hover:bg-blue-400 border-blue-600 mb-2 p-2 md:w-1/4 mx-2">
         <div class="p-4 flex flex-col">
             <a href="#" class="no-underline text-white text-2xl">
-                {{ $languages }}
+                {{ $languagesCount }}
             </a>
             <a href="#" class="no-underline text-white text-lg">
                 Total Languages

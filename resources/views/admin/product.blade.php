@@ -34,27 +34,29 @@
             </div>
 
             <!--Body-->
-            <form method="POST" action="{{ route('storeProducts') }}">
+            <form method="POST" action="{{ route('storeProduct') }}">
                 @csrf
 
                 <div>
                     <x-jet-label for="name" value="{{ __('misc.name') }}" />
-                    <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                    <x-jet-input id="name" class="block mt-1 w-full border-4 border-light-blue-500 border-opacity-75" type="text" name="name" :value="old('name')"
+                        required autofocus autocomplete="name" />
                 </div>
 
                 <div class="mt-4">
                     <x-jet-label for="description" value="{{ __('misc.description') }}" />
-                    <x-jet-input id="email" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required />
+                    <x-jet-input id="email" class="block mt-1 w-full border-4 border-light-blue-500 border-opacity-75" type="text" name="description"
+                        :value="old('description')" required />
                 </div>
 
                 <div class="mt-4">
                     <x-jet-label for="price" value="{{ __('misc.price') }}" />
-                    <x-jet-input id="price" class="block mt-1 w-full" type="number" name="price" required />
+                    <x-jet-input id="price" class="block mt-1 w-full border-4 border-light-blue-500 border-opacity-75" type="number" name="price" required />
                 </div>
 
                 <div class="mt-4">
                     <x-jet-label for="image_url" value="{{ __('misc.image_url') }}" />
-                    <x-jet-input id="image_url" class="block mt-1 w-full" type="text" name="image_url" />
+                    <x-jet-input id="image_url" class="block mt-1 w-full border-4 border-light-blue-500 border-opacity-75" type="text" name="image_url" />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
@@ -68,14 +70,13 @@
     </div>
 </div>
 <div class="px-6 py-10 mx-36">
-<x-jet-validation-errors class="mb-4" />
-@if (session('status'))
+    <x-jet-validation-errors class="mb-4" />
+    @if (session('status'))
     <div class="mb-4 font-medium text-sm text-green-600">
         {{ session('status') }}
     </div>
-@endif
-<button
-        class="modal-open uppercase px-8 py-2 bg-red-600 text-blue-50 max-w-max shadow-sm hover:shadow-md">add
+    @endif
+    <button class="modal-open uppercase px-8 py-2 bg-red-600 text-blue-50 max-w-max shadow-sm hover:shadow-md">add
         new product</button>
 </div>
 <div class="flex flex-1 flex-col justify-center md:flex-row lg:flex-row mx-1">

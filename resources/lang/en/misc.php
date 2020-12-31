@@ -61,5 +61,9 @@ return [
     'dashboard' => 'Dashboard',
     'description' => 'Description',
     'price' => 'Price',
-    'image_url' => 'Image URL'
+    'image_url' => 'Image URL',
+    'title' => 'Title',
+    'locale' => 'Locale',
+    'flag' => 'Flag',
+    'language' => 'Language'
 ];
