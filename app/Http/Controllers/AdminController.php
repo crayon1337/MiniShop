@@ -80,4 +80,13 @@ class AdminController extends Controller
         
         return back()->withInput($request->only('email'))->withErrors(['password' => 'These credentials do not match our records.']);
     }
+
+    /**
+     * Validate the request from the user
+     * Create the product in the database!
+    */
+    public function saveProduct(Request $request)
+    {
+        
+    }
 }

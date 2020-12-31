@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="flex flex-1 flex-col justify-center md:flex-row lg:flex-row mx-1 py-4">
+<div class="flex flex-1 flex-col justify-center md:flex-row lg:flex-row mx-1 py-10">
 <table class="table-auto">
         <thead class="justify-between">
           <tr class="bg-gray-800">

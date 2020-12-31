@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2 py-4">
+<div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2 py-10">
     <div class="shadow-lg bg-red-500 border-l-8 hover:bg-red-400 border-red-600 mb-2 p-2 md:w-1/4 mx-2">
         <div class="p-4 flex flex-col">
             <a href="#" class="no-underline text-white text-2xl">
