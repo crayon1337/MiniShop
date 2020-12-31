@@ -68,6 +68,12 @@
     </div>
 </div>
 <div class="px-6 py-10 mx-36">
+<x-jet-validation-errors class="mb-4" />
+@if (session('status'))
+    <div class="mb-4 font-medium text-sm text-green-600">
+        {{ session('status') }}
+    </div>
+@endif
 <button
         class="modal-open uppercase px-8 py-2 bg-red-600 text-blue-50 max-w-max shadow-sm hover:shadow-md">add
         new product</button>

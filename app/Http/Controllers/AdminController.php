@@ -8,6 +8,7 @@ use App\Models\Admin;
 use App\Models\Language;
 use App\Models\Product;
 use App\Models\User;
+use App\Http\Requests\StoreProductRequest;
 
 
 class AdminController extends Controller
@@ -43,7 +44,7 @@ class AdminController extends Controller
     public function products()
     {
         // Return all available products to the view.
-        return view('admin.product', [ 'products' => Product::with('language')->get() ]);
+        return view('admin.product', [ 'products' => Product::with('language')->orderBy('created_at', 'desc')->get() ]);
     }
 
     /**
@@ -85,8 +86,15 @@ class AdminController extends Controller
      * Validate the request from the user
      * Create the product in the database!
     */
-    public function saveProduct(Request $request)
+    public function saveProduct(StoreProductRequest $request)
     {
-        
+        //Get the validated data from StoreProductRequest Class
+        $data = $request->validated();
+
+        //Store the product in the database.
+        Product::create($data);
+
+        //Return back with a message.
+        return back()->with(['status' => 'The product has been saved successfully']);
     }
 }
