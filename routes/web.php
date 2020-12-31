@@ -190,18 +190,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
     Route::get('/', function () {
         return view('home');
     })->name('home');
-
-    Route::get('/shop', function() {
-        return view('shop');
-    })->middleware('throttle:30,1')->name('shop');
-
-    Route::get('/about', function() {
-        return view('about');
-    })->middleware('throttle:30,1')->name('about');
-
-    Route::get('/contact', function() {
-        return view('contact');
-    })->middleware('throttle:30,1')->name('contact');
+    Route::get('/shop', App\Http\Controllers\ShopController::class)->middleware('throttle:30,1')->name('shop');
     
     //Admin Login Routes
     Route::get('/login', function() {

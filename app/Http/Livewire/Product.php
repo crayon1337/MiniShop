@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Product extends Component
 {
-    private function getProducts()
+    private function getLatestProducts()
     {
         return \App\Models\Product::limit(6)->orderBy('created_at','desc')->get();
     }
@@ -14,7 +14,7 @@ class Product extends Component
     public function render()
     {
         return view('livewire.product', [
-            'data' => $this->getProducts(),
+            'data' => $this->getLatestProducts(),
         ]);
     }
 }

@@ -18,10 +18,10 @@
                     <x-jet-nav-link href="{{ route('shop') }}" :active="request()->routeIs('shop')">
                         {{ __('misc.shop') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">
+                    <x-jet-nav-link href="#" :active="request()->routeIs('about')">
                         {{ __('misc.about') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('contact') }}" :active="request()->routeIs('contact')">
+                    <x-jet-nav-link href="#" :active="request()->routeIs('contact')">
                         {{ __('misc.contact') }}
                     </x-jet-nav-link>
                 </div>

@@ -65,5 +65,6 @@ return [
     'title' => 'Title',
     'locale' => 'Locale',
     'flag' => 'Flag',
-    'language' => 'Language'
+    'language' => 'Language',
+    'allProducts' => 'All Products'
 ];

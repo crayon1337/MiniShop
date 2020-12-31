@@ -65,5 +65,6 @@ return [
     'title' => 'الاسم',
     'locale' => 'الرمز',
     'flag' => 'العلم',
-    'language' => 'اللغة'
+    'language' => 'اللغة',
+    'allProducts' => 'جميع المنتجات'
 ];

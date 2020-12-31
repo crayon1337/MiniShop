@@ -40,7 +40,7 @@ class AdminController extends Controller
     public function languages()
     {
         //Return all available languages to the view.
-        return view('admin.language', ['languages' => Language::orderBy('created_at', 'desc')->get()]);
+        return view('admin.language');
     }
 
     /**
